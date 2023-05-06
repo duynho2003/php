@@ -41,7 +41,7 @@
     <?php
       if (isset($_GET['error'])) {
          ?>
-         <h4 style="color: red;">Invalid username or password</h4>
+         <h4 style="color: red;">Invalid username or password!</h4>
          <?php
       }
     ?>
