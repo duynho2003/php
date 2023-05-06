@@ -62,7 +62,7 @@
 
     <div class="form-group">
         <label for="">Salary</label>
-        <input type="text" class="form-control" id="empID"  name="salary" value="" required>
+        <input type="number" class="form-control" id="empID"  name="salary" min="0" value="" required>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>

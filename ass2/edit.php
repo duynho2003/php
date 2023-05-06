@@ -89,7 +89,8 @@ function getStaffbyID($empID){
 
         <div class="form-group">
             <label for="">Salary</label>
-            <input type="number" class="form-control" id="empID"  name="salary" value="<?php echo $staff["Salary"] ?>" required>
+            <input type="number" class="form-control" id="empID"  name="salary"
+            min="0" value="<?php echo $staff["Salary"] ?>" required>
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>

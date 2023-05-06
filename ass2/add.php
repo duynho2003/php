@@ -19,7 +19,7 @@
                 <option value="2">Admin</option>
             </select>
         </div>
-        <div>Salary: <input name="salary" type="number" required/></div>
+        <div>Salary: <input name="salary" type="number" min="0" required/></div>
         <input type="submit" value="Add">
     </form>
 </body>
