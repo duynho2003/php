@@ -27,7 +27,6 @@ function checkAccount($empID, $password)
         }
     } else {
         echo "Khong tim thay tai khoan cua ban";
-        header("Location: login.php");
     }
     closeDB($link);
 }
