@@ -51,7 +51,6 @@
                 <h4>
                     <a href="insertBook.php">Create New</a>
                 </h4>
-
                 <div class="price">
                     <h4>Price</h4>
                     <form action="" method="GET">
@@ -67,7 +66,6 @@
                         <input type="submit" name="btnSearch" class="btn" value="Search">
                     </form>
                 </div>
-
             </div>
         </form>
 
