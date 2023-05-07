@@ -41,28 +41,20 @@ function getBooks()
     return $books;
 }
 
-function findByPrice($priceFrom, $priceTo)
+function findByPrice($min,$max)
 {
     $books = [];
-    $link = connectDB();
-    $query = "Select * From tbbook Where price BETWEEN ? AND ?";
-    $priceFrom = (double)$priceFrom;
-    $priceTo = (double)$priceTo;
-    if ($stm = mysqli_prepare($link, $query)) {
-        mysqli_stmt_bind_param($stm, 'dd', $priceFrom, $priceTo);
-        mysqli_stmt_execute($stm);
-        $result = mysqli_stmt_get_result($stm);
-        mysqli_stmt_close($stm);
+    $link = connectDb();
+    $query = "SELECT * FROM tbBook WHERE price BETWEEN $min AND $max";
+    $result= mysqli_query($link,$query);
+    if(!$result){
+        die('Access to DB error');
     }
-    
-    if (!$result) {
-        die('Access DB Error');
+    if(mysqli_num_rows($result)>0){
+        while($row= mysqli_fetch_array($result)){
+            $books[] = $row;
+        }
     }
-    
-    while ($row = mysqli_fetch_array($result)) {
-        $books[] = $row;
-    }
-    
     mysqli_close($link);
     return $books;
 }

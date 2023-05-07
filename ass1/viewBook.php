@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,17 +54,17 @@
 
                 <div class="price">
                     <h4>Price</h4>
-                    <form action="findByPrice.php" method="GET">
+                    <form action="" method="GET">
                         <div class="editPrice">
                             <label for="">From $</label>
-                            <input type="number" name="priceFrom" id="">
+                            <input type="number" name="min" id="">
                         </div>
 
                         <div class="editPrice">
                             <label for="">To $</label>
-                            <input type="number" name="priceTo" id="">
+                            <input type="number" name="max" id="">
                         </div>
-                        <input type="submit" name="btn_search" class="btn" value="Search">
+                        <input type="submit" name="btnSearch" class="btn" value="Search">
                     </form>
                 </div>
 
@@ -82,41 +81,34 @@
                         <td>Author</td>
                     </tr>
                 </thead>
-
                 <tbody>
                     <?php
-                    include "db.php";
-                    include "findByPrice.php";
-                    if ( isset($_GET) && isset($_GET['priceFrom']) && isset($_GET['priceTo'])){
-                        $books = findByPrice($priceFrom, $priceTo);
-                        if (count($books) > 0) {
-                            foreach ($books as $item) {
-                                echo "
-                                <tr>
-                                <td>$item[0]</td>
-                                <td>$item[1]</td>
-                                <td> $item[2]</td>
-                                <td> $item[3]</td>
-                            </tr>
-                                ";
-                            }
-                        }
-                    }else{
+                    include 'db.php';
+                    if (isset($_GET['btnSearch'])) {
+                        $min = $_GET['min'];
+                        $max = $_GET['max'];
+                        $books = findByPrice($min, $max);
+                    } else {
                         $books = getBooks();
-                        if (count($books) > 0) {
-                            foreach ($books as $item) {
-                                echo "
-                                <tr>
-                                <td>$item[0]</td>
-                                <td>$item[1]</td>
-                                <td> $item[2]</td>
-                                <td> $item[3]</td>
-                            </tr>
-                                ";
-                            }
-                        }
                     }
-
+                    if (count($books) > 0) {
+                        foreach ($books as $item) {
+                    ?>
+                            <tr>
+                                <td><?php echo $item[0]; ?></td>
+                                <td><?php echo $item[1]; ?></td>
+                                <td><?php echo $item[2]; ?></td>
+                                <td><?php echo $item[3]; ?></td>
+                            </tr>
+                        <?php
+                        }
+                    } else {
+                        ?>
+                        <tr>
+                            <td colspan="3">No records</td>
+                        </tr>
+                    <?php
+                    }
                     ?>
                 </tbody>
             </table>
