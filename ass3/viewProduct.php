@@ -32,8 +32,8 @@
     <h1>Products List</h1>
     <hr>
     <form method="get" action="">
-        Input Price form <input name="min">
-        to <input name="max">
+        Input Price form <input type="number" name="min">
+        to <input type="number" name="max">
         <input type="submit" name="btnSearch" value="Search">
     </form>
     <table id="tbproduct">
