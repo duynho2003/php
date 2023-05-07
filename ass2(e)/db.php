@@ -5,9 +5,7 @@ function connectDB(){
     if(!$link){
         die('Ket noi that bai');
     }
-
     return $link; 
-    
 }
 
 // dong ket noi 
@@ -67,6 +65,5 @@ function addNew($empID, $password, $fullname, $email, $role, $salary){
         mysqli_stmt_execute($stm);
         mysqli_stmt_close($stm);
     }
-
     closeDB($link);
 }
